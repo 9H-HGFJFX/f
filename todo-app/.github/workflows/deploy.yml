@@ -1,0 +1,27 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Docker images
+        run: |
+          docker compose build
+          # 如需推送到 Docker Hub，取消下方注释并配置认证
+          # docker compose push
+
+      - name: Deploy to server (示例：本地运行，实际需根据服务器配置调整)
+        run: |
+          docker compose down
+          docker compose up -d
