@@ -1,19 +1,707 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Personal Introduction</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liu Xinyi - Software Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    .profile { max-width: 600px; margin: 0 auto; }
-    img { max-width: 100%; border-radius: 5px; }
+    :root {
+      --primary: #2c3e50;
+      --secondary: #6a11cb;
+      --accent: #00b4db;
+      --light: #f8f9fa;
+      --dark: #1a1a2e;
+      --gray: #6c757d;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 30px;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .student-id {
+      display: inline-block;
+      background: var(--primary);
+      padding: 8px 25px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .student-id:hover {
+      transform: scale(1.05);
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 900px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      margin-bottom: 25px;
+      background: linear-gradient(45deg, var(--accent), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4.5rem;
+      overflow: hidden;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .profile-img i {
+      transform: translateY(5px);
+    }
+    
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .intro-text {
+      text-align: center;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: var(--gray);
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      animation: fadeIn 0.8s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: white;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: popIn 0.5s ease;
+    }
+
+    .skill-tag:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-tag i {
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-tag:hover i {
+      transform: scale(1.2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.05);
+    }
+
+    .project-img {
+      height: 160px;
+      background: linear-gradient(45deg, var(--secondary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      transition: transform 0.5s ease;
+    }
+
+    .project-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      color: #666;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tech-tag {
+      background: rgba(0, 180, 219, 0.12);
+      color: var(--accent);
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      transform: translateY(-3px);
+      background: rgba(0, 180, 219, 0.2);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: rgba(0, 180, 219, 0.08);
+    }
+
+    .contact-item:hover {
+      color: var(--secondary);
+      background: rgba(106, 17, 203, 0.1);
+      transform: translateX(5px) scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item i {
+      font-size: 1.4rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover i {
+      transform: scale(1.2);
+    }
+
+    .education-item {
+      margin-bottom: 25px;
+      text-align: center;
+      animation: fadeInLeft 0.8s ease;
+    }
+
+    .edu-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .edu-subtitle {
+      color: var(--secondary);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .edu-details {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 800px;
+      font-size: 1.3rem;
+      color: var(--primary);
+      border-left: 4px solid var(--accent);
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      position: relative;
+      font-weight: 300;
+      animation: fadeIn 1s ease;
+    }
+
+    .quote::before {
+      content: """;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 5rem;
+      color: rgba(0, 180, 219, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--gray);
+      font-size: 1rem;
+      margin-top: 20px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .github-hint {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      text-align: left;
+      animation: pulse 2s infinite;
+    }
+
+    .github-hint h3 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.2); }
+      70% { box-shadow: 0 0 0 10px rgba(106, 17, 203, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(106, 17, 203, 0); }
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 30px 0;
+      border: 0;
+    }
   </style>
 </head>
 <body>
-  <div class="profile">
-    <h1>liuxinyi</h1>
-    <p>Student ID: 20232086</p>
-    <img src="profile.jpg" alt="Personal Picture">
-    <p>Introduction：There is nothing</p>
+  <div class="container">
+    <header>
+      <h1>LIU XINYI</h1>
+      <p class="subtitle">Software Engineering · Full Stack Developer</p>
+      <div class="student-id">
+        <i class="fas fa-id-card"></i> Student ID: 20232086
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="profile-card">
+       <div class="profile-img">
+    <img src="https://c-ssl.duitang.com/uploads/blog/202409/14/WXSNQP8msQpxjOB.jpg" alt="Liu Xinyi">
+       </div>
+        <h2 class="section-title">About Me</h2>
+        <p class="intro-text">
+          Passionate software engineering student specializing in full-stack development. 
+          I create elegant solutions to complex problems through clean, efficient code. 
+          Currently exploring cloud-native architectures and AI-powered applications.
+        </p>
+        
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+          <div class="edu-title">Bachelor of Software Engineering</div>
+          <div class="edu-subtitle">North Minzu University</div>
+          <div class="edu-details">2023 - Present | GPA: 3.9/5.0</div>
+        </div>
+        
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-info">
+          <a href="mailto:20232086@stu.nmu.edu.cn" class="contact-item">
+            <i class="fas fa-envelope"></i> 20232086@stu.nmu.edu.cn
+          </a>
+          <a href="https://github.com/9H-HGFJFX" target="_blank" class="contact-item">
+            <i class="fab fa-github"></i> github.com/9H-HGFJFX
+          </a>
+          <a href="tencent://message/?uin=3478437491" class="contact-item">
+            <i class="fab fa-qq"></i> QQ: 3478437491
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="info-card">
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="skills-container">
+            <div class="skill-tag"><i class="fab fa-js"></i> JavaScript/ES6+</div>
+            <div class="skill-tag"><i class="fab fa-react"></i> React & Redux</div>
+            <div class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</div>
+            <div class="skill-tag"><i class="fab fa-node-js"></i> Node.js</div>
+            <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+            <div class="skill-tag"><i class="fas fa-database"></i> MongoDB</div>
+            <div class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</div>
+            <div class="skill-tag"><i class="fab fa-aws"></i> AWS</div>
+            <div class="skill-tag"><i class="fas fa-mobile-alt"></i> React Native</div>
+            <div class="skill-tag"><i class="fas fa-code"></i> Algorithms</div>
+            <div class="skill-tag"><i class="fab fa-docker"></i> Docker</div>
+            <div class="skill-tag"><i class="fab fa-git-alt"></i> Git & CI/CD</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2 class="section-title">Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">E-Commerce Platform</h3>
+                <p class="project-desc">
+                  Full-stack e-commerce solution with React frontend, Node.js backend, 
+                  and payment integration. Implemented real-time inventory management.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Stripe API</span>
+                  <span class="tech-tag">MongoDB</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Data Visualization Dashboard</h3>
+                <p class="project-desc">
+                  Interactive financial dashboard with real-time data processing 
+                  and customizable visualization modules for investment analysis.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">D3.js</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">WebSockets</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Campus Connect Mobile App</h3>
+                <p class="project-desc">
+                  University social network with event planning, resource sharing, 
+                  and messaging features. Implemented push notifications and geofencing.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">React Native</span>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">Redux</span>
+                  <span class="tech-tag">Mapbox</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Added fourth project -->
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">AI Medical Assistant</h3>
+                <p class="project-desc">
+                  Healthcare AI application that analyzes medical images using computer vision
+                  algorithms to assist doctors in diagnostics and treatment planning.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">TensorFlow</span>
+                  <span class="tech-tag">Computer Vision</span>
+                  <span class="tech-tag">Flask API</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2 class="section-title">Professional Skills</h2>
+          <div class="skills-container">
+            <div class="skill-tag"><i class="fas fa-laptop-code"></i> Frontend Development</div>
+            <div class="skill-tag"><i class="fas fa-server"></i> Backend Architecture</div>
+            <div class="skill-tag"><i class="fas fa-cloud"></i> Cloud Deployment</div>
+            <div class="skill-tag"><i class="fas fa-sync-alt"></i> Agile Methodology</div>
+            <div class="skill-tag"><i class="fas fa-users"></i> Team Collaboration</div>
+            <div class="skill-tag"><i class="fas fa-book"></i> Technical Documentation</div>
+            <div class="skill-tag"><i class="fas fa-lightbulb"></i> Problem Solving</div>
+            <div class="skill-tag"><i class="fas fa-comments"></i> Technical Communication</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="quote">
+      "I believe well-crafted code is the ultimate form of problem-solving poetry. 
+      Each line should not only function but communicate intention and elegance."
+    </div>
+
+    <footer>
+      <p>© 2025 Liu Xinyi - Software Engineering Portfolio | Crafting the Future with Code</p>
+    </footer>
   </div>
+
+  <script>
+    // Additional animation effects on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.info-card, .project-card');
+        
+        elements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementTop < window.innerHeight - elementVisible) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          }
+        });
+      };
+      
+      // Set initial state
+      document.querySelectorAll('.info-card, .project-card').forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      });
+      
+      // Trigger on load and scroll
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll();
+      
+      // Skill tag animation
+      const skillTags = document.querySelectorAll('.skill-tag');
+      skillTags.forEach((tag, index) => {
+        tag.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
 </body>
 </html>
